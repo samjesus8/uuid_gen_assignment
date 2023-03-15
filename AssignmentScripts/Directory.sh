@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 
+directory="/workspace/utility_script-samjesus8/_Directory"
+read -p "Please type in the Directory to view: " dirselect
+
 echo ==================================
 echo Listing Directories in _Directory
 echo ==================================
@@ -8,30 +11,18 @@ echo
 du -shc /workspace/utility_script-samjesus8/_Directory/*
 echo
 
-echo =================================
-echo -1st Level of SubDirectories
-echo ==================================
+if [ $dirselect == "dir1" ]; then
 
-ls /workspace/utility_script-samjesus8/_Directory/*
-echo
-
-echo =================================
-echo -2nd Level of SubDirectories
-echo ==================================
-echo
-
-echo Subdir1
-ls /workspace/utility_script-samjesus8/_Directory/dir1/subdir1/*
-echo
-
-echo Subdir2
-ls /workspace/utility_script-samjesus8/_Directory/dir1/subdir2/*
-echo
-
-echo Subdir3
-ls /workspace/utility_script-samjesus8/_Directory/dir1/subdir3/*
-echo
-
-echo Subdir4
-ls /workspace/utility_script-samjesus8/_Directory/dir1/subdir4/*
-echo
+    echo ==================================
+    echo Subdirectories of Dir1
+    echo ==================================
+    echo
+    ls $directory/dir1/*
+elif [ $dirselect == "dir2" ]; then
+    echo ==================================
+    echo Subdirectories of Dir2
+    echo ==================================
+    ls $directory/dir2/*
+else 
+	echo "Directory does not exist"
+fi
