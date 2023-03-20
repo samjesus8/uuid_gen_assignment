@@ -54,19 +54,20 @@ if [ "$dirselect" == "dir1" ]; then
     echo "=================================="
 
     # Count each file by filetype and list this output
-    subdirs=("subsubdir1" "subsubdir2" "subsubdir3" "subsubdir4")
+    subdirs=("subdir1" "subdir2" "subdir3" "subdir4")
+    subsubdirs=("subsubdir1" "subsubdir2" "subsubdir3" "subsubdir4")
 
     for subdir in "${subdirs[@]}"; do
-        echo "$subdir"
-        echo "=================================="
-        find "$dir1/subdir1/$subdir/" -type f -printf '%f\n' | awk -F. '{print $NF}' | sort | uniq -c
-        echo "=================================="
-        echo
+        for subsubdir in "${subsubdirs[@]}"; do
+            echo "$subdir/$subsubdir"
+            echo "=================================="
+            find "$dir1/$subdir/$subsubdir/" -type f -printf '%f\n' | awk -F. '{print $NF}' | sort | uniq -c
+            echo "=================================="
+            echo
+        done
     done
-
-# ============================================================================
-
-else 
+        
+else
 	echo "Directory does not exist"
     echo "The directories in _Directory are:"
     echo
