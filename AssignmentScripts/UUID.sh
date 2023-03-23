@@ -59,7 +59,7 @@ generate_uuid_v1()
     clock=$(setVariant $clock)
 
     if [ -z "${mac}" ]; then
-        # mac is not set or set to an empty string, randomize
+        # if mac is not set or set to an empty string, create random mac address
         mac=$(tr -dc a-f0-9 < /dev/urandom | dd bs=12 count=1 2> /dev/null)
         mac=$(setMulticast $mac)
     fi
