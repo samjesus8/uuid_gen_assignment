@@ -137,7 +137,6 @@ generate_uuid_v1()
 
     # print clock and MAC
     printf "%s-%s" $clock $mac
-    echo 
 }
 
 generate_uuid_v4()
@@ -157,7 +156,7 @@ generate_uuid_v4()
     twelve5=$(tr -dc a-f0-9 < /dev/urandom | dd bs=12 count=1 2> /dev/null)
    
     #Outputting the final thing
-    printf "${eight1}-${four2}-4${three3}-${four4}-${twelve5}"
+    printf "${eight1}-${four2}-4${three3}-${four4}-${twelve5} \n" | tee -a uuidList4.txt
 
     echo
 }
@@ -169,14 +168,15 @@ shift
 case "$command" in
     "1") # UUID 1
         echo "Generating UUID Version 1"
-        generate_uuid_v1 $1
+        generate_uuid_v1 | tee -a uuidList1.txt
+        echo | tee -a uuidList1.txt
         ;;
     "4") # UUID 4
         echo "Generating UUID Version 4"
         generate_uuid_v4
         ;;
     *) # Exit if no parameters are given
-    ecoh "You need to specify either 1 or 4 as the version of UUID"
+    echo "You need to specify either 1 or 4 as the version of UUID"
         exit 1
         ;;
 esac
