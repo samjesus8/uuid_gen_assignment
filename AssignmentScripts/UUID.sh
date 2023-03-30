@@ -14,15 +14,12 @@ dec2hex()
 
 setVariant()
 {
-    # set Variant  RFC 4122  01xx xxxx xxxx xxxx
 	printf "%x" $(((0x$1 & 0x3fff) | 0x8000))
 }
 
 # Sets version to 4 for UUID4
 setVersion4()
 {
-	#set ver 4
-    #Set the two most significant bits (bits 6 and 7) of the clock_seq_hi_and_reserved (8) to zero and one, respectively.	
 	printf "%x" $(((0x$1 & 0x0fff) | 0x4000))
 }
 
@@ -99,10 +96,18 @@ case "$command" in
         echo "Generating UUID Version 1"
         generate_uuid_v1 | tee -a uuidList1.txt
         echo | tee -a uuidList1.txt
+
+        my_variable=$USER
+        current_time=$(date +%T)
+        echo "[$current_time] | $my_variable used this command 'UUID.sh' with parameter '1'" | tee -a log.txt
         ;;
     "4") # UUID 4
         echo "Generating UUID Version 4"
         generate_uuid_v4
+
+        my_variable=$USER
+        current_time=$(date +%T)
+        echo "[$current_time] | $my_variable used this command 'UUID.sh' with parameter '4'" | tee -a log.txt
         ;;
     *) # Exit if no parameters are given
     echo "You need to specify either 1 or 4 as the version of UUID"
