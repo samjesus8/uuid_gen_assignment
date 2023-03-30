@@ -63,6 +63,12 @@ if [ "$command" == "dir1" ]; then
             echo "=================================="
             find "$dir1/$subdir/$subsubdir/" -type f -printf '%f\n' | awk -F. '{print $NF}' | sort | uniq -c
             echo "=================================="
+            echo "The shortest file name is: "
+            find "$dir1/$subdir/$subsubdir/" -type f -printf '%f\n' | sort -n | head -1
+            echo
+            echo "The longest file name is: "
+            find "$dir1/$subdir/$subsubdir/" -type f -printf '%f\n' | wc -L | xargs -I{} find "$dir1/$subdir/$subsubdir/" -type f -printf '%f\n' | head -1
+            echo "=================================="
             echo
         done
     done
@@ -106,6 +112,12 @@ elif [ "$command" == "dir2" ]; then
             echo "$subdir/$subsubdir"
             echo "=================================="
             find "$dir2/$subdir/$subsubdir/" -type f -printf '%f\n' | awk -F. '{print $NF}' | sort | uniq -c
+            echo "=================================="
+            echo "The shortest file name is: "
+            find "$dir2/$subdir/$subsubdir/" -type f -printf '%f\n' | sort -n | head -1
+            echo
+            echo "The longest file name is: "
+            find "$dir2/$subdir/$subsubdir/" -type f -printf '%f\n' | wc -L | xargs -I{} find "$dir2/$subdir/$subsubdir/" -type f -printf '%f\n' | head -1
             echo "=================================="
             echo
         done
@@ -151,6 +163,12 @@ elif [ "$command" == "dir3" ]; then
             echo "=================================="
             find "$dir2/$subdir/$subsubdir/" -type f -printf '%f\n' | awk -F. '{print $NF}' | sort | uniq -c
             echo "=================================="
+            echo "The shortest file name is: "
+            find "$dir3/$subdir/$subsubdir/" -type f -printf '%f\n' | sort -n | head -1
+            echo
+            echo "The longest file name is: "
+            find "$dir3/$subdir/$subsubdir/" -type f -printf '%f\n' | wc -L | xargs -I{} find "$dir3/$subdir/$subsubdir/" -type f -printf '%f\n' | head -1
+            echo "=================================="
             echo
         done
     done
@@ -195,6 +213,12 @@ elif [ "$command" == "dir4" ]; then
             echo "=================================="
             find "$dir2/$subdir/$subsubdir/" -type f -printf '%f\n' | awk -F. '{print $NF}' | sort | uniq -c
             echo "=================================="
+            echo "The shortest file name is: "
+            find "$dir4/$subdir/$subsubdir/" -type f -printf '%f\n' | sort -n | head -1
+            echo
+            echo "The longest file name is: "
+            find "$dir4/$subdir/$subsubdir/" -type f -printf '%f\n' | wc -L | xargs -I{} find "$dir4/$subdir/$subsubdir/" -type f -printf '%f\n' | head -1
+            echo "=================================="
             echo
         done
     done
@@ -209,4 +233,4 @@ fi
 
 my_variable=$USER
 current_time=$(date +%T)
-echo "[$current_time] | $my_variable used this command 'Directory.sh'" | tee -a log.txt
+echo "[$current_time] | $my_variable used this command 'Directory.sh' with parameter $command" | tee -a log.txt
