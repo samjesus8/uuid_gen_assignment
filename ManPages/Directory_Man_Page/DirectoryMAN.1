@@ -1,0 +1,26 @@
+.TH Directory Viewer 1 "2023-03-30" "Version 1.0" "Directory Viewer Manual"
+.SH NAME
+Directory Viewer - display subdirectories and file statistics of a specified directory
+.SH SYNOPSIS
+.B Directory
+[\fIFOLDER_NAME\fR]
+.SH DESCRIPTION
+The \fIdirectory_viewer\fR command displays the subdirectories and file statistics of a specified directory.
+The following options are available:
+.RS
+The output shows the subdirectories of the target directory, the number of files in each subdirectory, and their total size.
+Additionally, the shortest and longest file names in each subdirectory are displayed.
+The subdirectories are listed in the following format:
+.PP
+\fIdir1\fR - Lists everything in \fIdir1\fR\n
+\fIdir2\fR - Lists everything in \fIdir2\fR\n
+\fIdir3\fR - Lists everything in \fIdir3\fR\n
+\fIdir4\fR - Lists everything in \fIdir4\fR
+.RE
+.SH EXAMPLES
+.PP
+Display subdirectories and file statistics of a specified directory:
+.PP
+.B Directory dir1
+.SH AUTHOR
+The \fIdirectory_viewer\fR command was written by [Samuel Jesuthas].

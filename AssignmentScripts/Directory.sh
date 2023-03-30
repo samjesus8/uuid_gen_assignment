@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 
+# This is our command parameter
+command=$1
+
 echo ==================================
 echo Listing Directories in _Directory
 echo ==================================
@@ -18,12 +21,9 @@ for directory in $"/workspace/utility_script-samjesus8/_Directory/*"; do
     done
 echo
 
-# Input on which subdirectory we want to view
-read -rp "Please type in the Directory to view: " dirselect
-
 # Outcome Area
 # ============================================================================
-if [ "$dirselect" == "dir1" ]; then
+if [ "$command" == "dir1" ]; then
     echo "=================================="
     echo "Subdirectories of Dir1"
     echo "=================================="
@@ -67,7 +67,7 @@ if [ "$dirselect" == "dir1" ]; then
         done
     done
 
-elif [ "$dirselect" == "dir2" ]; then
+elif [ "$command" == "dir2" ]; then
     echo "=================================="
     echo "Subdirectories of Dir2"
     echo "=================================="
@@ -111,7 +111,7 @@ elif [ "$dirselect" == "dir2" ]; then
         done
     done
 
-elif [ "$dirselect" == "dir3" ]; then
+elif [ "$command" == "dir3" ]; then
     echo "=================================="
     echo "Subdirectories of Dir3"
     echo "=================================="
@@ -155,7 +155,7 @@ elif [ "$dirselect" == "dir3" ]; then
         done
     done
 
-elif [ "$dirselect" == "dir4" ]; then
+elif [ "$command" == "dir4" ]; then
     echo "=================================="
     echo "Subdirectories of Dir4"
     echo "=================================="

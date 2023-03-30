@@ -1,0 +1,17 @@
+.TH UUID Generator 1 "2023-03-30" "Version 1.0" "UUID Generator Manual"
+.SH NAME
+UUID Generator - generates UUIDs based on Version 1 or Version 4
+.SH SYNOPSIS
+.B uuid [\fIVERSION\fR]
+.SH DESCRIPTION
+
+The \fIuuid\fR command generates a UUID based on Version 1 or Version 4 and saves it to a file.
+
+.RS
+UUIDs are 128-bit identifiers that can be used as unique identifiers.
+Version 1 UUIDs are generated based on the current time and the MAC address of the computer.
+Version 4 UUIDs are generated using a random number generator.
+The generated UUID is saved to a file.
+The \fIVERSION\fR argument specifies the UUID version to generate.
+Valid values are 1 for Version 1 UUIDs and 4 for Version 4 UUIDs.
+.RE
